@@ -6,24 +6,24 @@ import './style.css';
 const ChatPage = () => {
     const [message, setMessage] = useState({});
     const [chat, setChat] = useState([]);
-    const [users, setUsers] = useState([user1, user2]);
+    const [users, setUsers] = useState([]);
 
-    let user1 = {
-        name: "Sarah",
-        messages: [
-            { text: "Hello" },
-            { text: "How are you?" }
-        ]
-    }
+    //let user1 = {
+    //    name: "Sarah",
+    //    messages: [
+    //        { text: "Hello" },
+    //        { text: "How are you?" }
+    //    ]
+    //}
 
 
-    let user2 = {
-        name: "Samuel",
-        messages: [
-            { text: "Hi" },
-            { text: "I'm good and you?" }
-        ]
-    }
+    //let user2 = {
+    //    name: "Samuel",
+    //    messages: [
+    //        { text: "Hi" },
+    //        { text: "I'm good and you?" }
+    //    ]
+    //}
 
     const typeMessage = (e) => {
         let target = e.target.value;
@@ -41,6 +41,18 @@ const ChatPage = () => {
         if (Object.keys(message) !== 0) {
             setChat(prev => [...prev, message])
             console.log(chat);
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            }
+
+            fetch('api/messages', options)
+            .then(res => console.log(res))
         }
         else {
 

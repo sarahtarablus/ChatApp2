@@ -12,7 +12,7 @@ namespace ChatApp2.Controllers
     [Route("api/[controller]")]
     public class messagesController : ControllerBase
     {
-        public string[] messages = new string[3] { "Hello", "How are you?", "what are you up to?" };
+        public string[] messages = new string[0];
 
         [HttpGet]
         public IActionResult Get()
@@ -24,6 +24,7 @@ namespace ChatApp2.Controllers
         [HttpPost]
         public IActionResult Post(JObject payload)
         {
+  
             return Ok(payload);
         }
    

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //import decode from 'jwt-decode';
 
-//import axios from 'axios';
+
 import ChatPage from './ChatPage.js';
 import './style.css';
 
@@ -14,7 +14,7 @@ const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-
+   
 
     //const setToken = (id) => {
     //    localStorage.setItem('idToken', id);
@@ -76,14 +76,26 @@ const App = () => {
 
 
 
-    const signIn =  () => {
+    const signIn =   () => {
         while (userName === '' || userName.length < 5 || userName.length > 15 || password === '' || password.length < 5 || password.length > 10) {
             alert('A valid username and password are required ( between 5 and 10 characters )');
             return;
         }
 
-        //await axios.post('/SignUp', options)
-        //    .then(res => console.log(res));
+        console.log(userName + password)
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({ userName, password })
+        }
+
+
+        fetch('/api/users', options)
+            .then(res => console.log(res));
 
 
         //setUsernamePasswordToLocalStorage();
@@ -114,11 +126,7 @@ const App = () => {
         //}
 
 
-        //const options = {
-        //    method: 'POST',
-        //    body: JSON.stringify({ userName, password })
-        //}
-
+      
         //await axios.post('/logIn', options)
         //    .then(res => setToken(res.token);
 

@@ -13,7 +13,7 @@ namespace ChatApp2.Controllers
 
     public class usersController: ControllerBase
     {
-        public string[] users = new string[3] { "Sarah", "Andrew", "Marta" };
+        public string[] users = new string[0];
 
         [HttpGet]
         public IActionResult Get()
@@ -25,7 +25,9 @@ namespace ChatApp2.Controllers
         [HttpPost]
         public IActionResult Post(JObject payload)
         {
+     
             return Ok(payload);
+
         }
     }
 }
